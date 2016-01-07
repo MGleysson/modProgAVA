@@ -1,0 +1,39 @@
+@(id: String, questaoForm: Form[Questao])
+
+@import helper._
+
+@main("Alterar/Remover Questão") {
+	<meta charset="UTF-8">
+	
+	<div class="container">
+		<div class="header">
+			<div class="nav nav-pills pull-right">
+				<a href="@routes.QuestaoCRUD.listar_questoes()"> <button type="button" class="btn btn-primary"> Voltar </button> </a>
+			</div>
+		</div>
+		
+		<h4> <b> Alterar/Remover Questão </b> </h4>
+		
+		<hr>
+		
+		@form(routes.QuestaoCRUD.alterar_questao(id)) {
+			<fieldset>
+				@inputText(questaoForm("tituloquestao"), '_label -> "Título:", 'size -> 50)
+				@textarea(questaoForm("enunciadoquestao"), '_label -> "Enunciado:", 'rows -> 20, 'cols -> 90)
+				@inputRadioGroup(questaoForm("respostaquestao"), options = options("a" -> "A", "b" -> "B", "c" -> "C", "d" -> "D", "e" -> "E" ), '_label -> "Resposta:",'_error -> questaoForm("respostaquestao").error.map(_.withMessage("Selecione uma alternativa!")))
+			</fieldset>
+			<div class="control-group">
+				<div class="actions">
+					<input type="submit" value="Alterar" class="btn btn-warning">
+				</div>
+			</div>
+		}
+		
+
+		@form(routes.QuestaoCRUD.remover_questao(id)) {
+			<input type="submit" value="Remover" class="btn btn-danger">
+		}
+
+
+	</div>
+}

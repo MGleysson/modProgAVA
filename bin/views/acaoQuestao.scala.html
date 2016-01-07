@@ -1,0 +1,38 @@
+@(id: String, questaoForm: Form[Questao])
+
+@import helper._
+
+@main("Alterar/Remover Questão") {
+	<meta charset="UTF-8">
+	<div class="container">
+		<div class="header">
+			<ul class="nav nav-pills pull-right">
+				<li class="active"><a href="@routes.QuestaoCRUD.listar_questoes()"> Voltar </a></li>
+			</ul>
+		</div>
+		
+		<h3>Alterar/Remover Questão</h3>
+		
+		<br />
+		
+		@form(routes.QuestaoCRUD.alterar_questao(id)) {
+			<fieldset>
+				@inputText(questaoForm("tituloquestao"), '_label -> "Título:", 'size -> 50)
+				@textarea(questaoForm("enunciadoquestao"), '_label -> "Enunciado:", 'rows -> 20, 'cols -> 90)
+			</fieldset>
+			<div class="control-group">
+				<div class="actions">
+					<input type="submit" value="Alterar" class="btn btn-warning">
+				</div>
+			</div>
+		}
+		
+		<br />
+
+		@form(routes.QuestaoCRUD.remover_questao(id)) {
+			<input type="submit" value="Remover" class="btn btn-danger">
+		}
+
+
+	</div>
+}

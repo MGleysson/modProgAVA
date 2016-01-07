@@ -1,0 +1,41 @@
+@(id: String, questao: Questao, questaoForm: Form[Questao])
+
+@import helper._
+
+@main("Responder Questão") {
+
+	<meta charset="UTF-8">
+	<div class="container">
+		<div class="header">
+			<ul class="nav nav-pills pull-right">
+				<li class="active"><a href="@routes.QuestaoAluno.listar_questoes_aluno()"> Voltar </a></li>
+			</ul>
+		</div>
+		
+		<h4> Responder Questão </h4>
+		<hr>
+		
+		@form(routes.QuestaoAluno.avaliar_resposta(id)) {
+			<h5> <b> @questao.getTituloquestao() </b> </h5> 
+			
+			@textarea(questaoForm("enunciadoquestao"), '_label -> " ", 'readonly -> "readonly", 'rows -> 20, 'cols -> 90)
+			
+			<div class="alternativas">
+				@checkbox(field = questaoForm("A"))
+				@checkbox(field = questaoForm("B"))
+				@checkbox(field = questaoForm("C"))
+				@checkbox(field = questaoForm("D"))
+				@checkbox(field = questaoForm("E"))
+				
+				<input type="submit" value="Submeter resposta" class="btn btn-success">		
+			</div>
+			
+			
+			
+			
+			
+			
+		}
+		
+	</div>
+}

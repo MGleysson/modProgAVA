@@ -1,0 +1,46 @@
+@(cursoForm : Form[Curso])
+
+@import helper._
+
+@main("Novo curso") {
+
+	<meta charset="UTF-8">
+	
+	<div class="container">
+		<div class="header">
+			<div class="nav nav-pills pull-right">
+				<a href="@routes.CursoCRUD.listar_cursos()"> <button type="button" class="btn btn-primary"> Voltar </button> </a>
+			</div>
+		</div>
+		
+		<h4> <b> Novo Curso </b> </h4>
+		
+		<hr>
+
+		@form(routes.CursoCRUD.salvar_curso()) {
+			<form class="form-horizontal">
+				<fieldset>
+					<div class="control-group">
+						<div class="controls">
+							@inputText(cursoForm("nomecurso"), '_label -> "Nome do curso:", 'size -> 50, 'placeholder -> "Insira o nome do curso aqui...")
+						</div>
+					</div>
+										
+				<div class="control-group">
+					<label class="control-label" for="singlebutton"></label>
+					<div class="controls">
+						<button id="singlebutton" name="singlebutton" class="btn btn-primary"> Cadastrar </button>
+					</div>
+				</div>
+		
+				</fieldset>
+			</form>		
+		
+		}
+	
+	</div>
+	
+	
+}
+	
+	

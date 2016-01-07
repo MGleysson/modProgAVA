@@ -1,0 +1,54 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+
+# Principal
+
+GET		/			controllers.Principal.index()
+
+#-------------------------------------------------------------------------------------------------
+
+# Cursos - Instrutor 
+
+GET		/instrutor/cursos			controllers.CursoCRUD.listar_cursos()
+
+GET 	/instrutor/curso/novo			controllers.CursoCRUD.criar_curso()
+
+POST	/instrutor/curso/			controllers.CursoCRUD.salvar_curso()
+
+GET		/instrutor/curso/:id		controllers.CursoCRUD.detalhar_curso(id: String)
+
+POST	/instrutor/curso/:id/alterar		controllers.CursoCRUD.alterar_curso(id: String)
+
+POST	/instrutor/curso/:id/remover		controllers.CursoCRUD.remover_curso(id: String)
+
+
+#-------------------------------------------------------------------------------------------------
+
+# Questões - Instrutor
+
+GET		/instrutor/questoes			controllers.QuestaoCRUD.listar_questoes()
+
+GET		/instrutor/questao/nova		controllers.QuestaoCRUD.criar_questao()
+
+POST	/instrutor/questao/			controllers.QuestaoCRUD.salvar_questao()
+
+GET		/instrutor/questao/:id		controllers.QuestaoCRUD.detalhar_questao(id: String)
+
+POST	/instrutor/questao/:id/alterar		controllers.QuestaoCRUD.alterar_questao(id: String)
+
+POST	/instrutor/questao/:id/remover		controllers.QuestaoCRUD.remover_questao(id: String)
+
+#-------------------------------------------------------------------------------------------------
+
+# Questões - Aluno
+
+GET		/aluno/questoes			controllers.QuestaoAluno.listar_questoes_aluno()
+
+GET		/aluno/questao/:id/responder	controllers.QuestaoAluno.responder_questao(id: String)
+
+POST		/aluno/questao/:id/avaliacao	controllers.QuestaoAluno.avaliar_resposta(id: String)
+
+#-------------------------------------------------------------------------------------------------
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

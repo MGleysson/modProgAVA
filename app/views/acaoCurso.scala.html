@@ -1,0 +1,37 @@
+@(id: String, cursoForm: Form[Curso])
+
+@import helper._
+
+@main("Alterar/Remover Curso") {
+	<meta charset="UTF-8">
+	
+	<div class="container">
+		<div class="header">
+			<div class="nav nav-pills pull-right">
+				<a href="@routes.CursoCRUD.listar_cursos()"> <button type="button" class="btn btn-primary"> Voltar </button> </a>
+			</div>
+		</div>
+		
+		<h4> <b> Alterar/Remover Curso </b> </h4>
+		
+		<hr>
+		
+		@form(routes.CursoCRUD.alterar_curso(id)) {
+			<fieldset>
+				@inputText(cursoForm("nomecurso"), '_label -> "Nome do curso:", 'size -> 50)
+			</fieldset>
+			<div class="control-group">
+				<div class="actions">
+					<input type="submit" value="Alterar" class="btn btn-warning">
+				</div>
+			</div>
+		}
+		
+
+		@form(routes.CursoCRUD.remover_curso(id)) {
+			<input type="submit" value="Remover" class="btn btn-danger">
+		}
+
+
+	</div>
+}

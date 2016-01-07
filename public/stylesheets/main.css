@@ -1,0 +1,27 @@
+/* estilo principal do sistema */
+
+body {
+	padding-top: 50px;
+}
+		
+.texto-inicial {
+	padding: 40px 15px;
+	text-align: center;
+}
+
+textarea {
+	resize: none;
+}
+
+.alternativas {
+	float: left;
+}
+
+hr {
+    background-color: blue;
+    height: 3px;
+}
+
+.texto-erro {
+	color: red;
+}

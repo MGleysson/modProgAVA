@@ -1,0 +1,35 @@
+@(id: String, questao: Questao, questaoForm: Form[Questao], questaoFormResposta: Form[Questao])
+
+@import helper._
+
+@main("Responder Questão") {
+
+	<meta charset="UTF-8">
+	
+	<div class="container">
+		<div class="header">
+			<div class="nav nav-pills pull-right">
+				<a href="@routes.QuestaoAluno.listar_questoes_aluno()"> <button type="button" class="btn btn-primary"> Voltar </button> </a>
+			</div>
+		</div>
+		
+		<h4> Responder Questão </h4>
+		<hr>
+		
+		@form(routes.QuestaoAluno.avaliar_resposta(id)) {
+			<h5> <b> @questao.getTituloquestao() </b> </h5> 
+			
+			@inputText(questaoForm("tituloquestao"), '_label -> "", 'readonly -> "readonly", 'size -> 88)
+			
+			@textarea(questaoForm("enunciadoquestao"), '_label -> " ", 'readonly -> "readonly", 'rows -> 20, 'cols -> 90)
+			
+			<div class="alternativas">
+				@inputRadioGroup(questaoFormResposta("respostaquestao"), options = options("a" -> "A", "b" -> "B", "c" -> "C", "d" -> "D", "e" -> "E" ), '_label -> "Resposta:",'_error -> questaoForm("respostaquestao").error.map(_.withMessage("Selecione uma alternativa!")))
+				
+				<input type="submit" value="Submeter resposta" class="btn btn-success">		
+			</div>
+			
+		}
+		
+	</div>
+}
